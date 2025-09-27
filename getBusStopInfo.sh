@@ -28,11 +28,11 @@ log() {
 }
 
 get_minutes_until_bus() {
-    # $1 = time when the bus arrives in seconds since midnight (of yesterday? wtf)
+    # $1 = time when the bus arrives in seconds since midnight
     BUS_TIME=$1
 
     seconds_now=$( date +%s )
-    seconds_at_midnight=$( date -d "yesterday 00:00:00" +%s ) # it calculates seconds since midnight of the previous day
+    seconds_at_midnight=$( date -d "today 00:00:00" +%s )
     seconds_since_midnight=$(( seconds_now - seconds_at_midnight ))
     seconds_until_bus=$(( BUS_TIME - seconds_since_midnight ))
     minutes_until_bus=$(( seconds_until_bus / 60 ))
