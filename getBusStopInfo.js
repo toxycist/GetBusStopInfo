@@ -14,7 +14,7 @@ const INDICES = [0, 1, 5, 3]
 
 function CSVToJSON(csv) {
 
-    var lines = csv.split("\n");
+    var lines = csv.trim().split("\n");
     var result = [];
 
     for(var i = 1; i < lines.length; i++){
