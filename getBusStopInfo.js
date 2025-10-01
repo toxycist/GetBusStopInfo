@@ -34,7 +34,24 @@ function CSVToJSON(csv) {
     return JSON.stringify(result);
 }
 
+/**
+ * Returns a JSON string, representing an array of buses where each entry has four fields of type string: `bus_type`, `bus_num`, `bus_direction`, `bus_time`.
+ * 
+ * @param {number} stop_id -
+ * - **2016**: Licėjus (Akropolio kryptimi); 
+ * - **0710**: Licėjus (Žirmunų kryptimi); 
+ * - **0804**: Pramogų arena. Kareivių g. (Žirmūnų kryptimi); 
+ * - **0802**: Pramogų arena, Kalvarijų g. (Santariškių kryptimi); 
+ * - **0709**: Pramogų arena. Kalvarijų g. (Centro kryptimi); 
+ * - **2015**: Pramogų arena. Kareivių g. (Ozo kryptimi); 
+ * - **0708**: Tauragnų st. (Centro kryptimi); 
+ * - **0803**: Tauragnų st. (Santariškių kryptimi); 
+ * - Consult https://docs.google.com/spreadsheets/d/1FaRhmFvxCVLVhHCnEjrGq3l42fSa1R648fk2H3xqHuQ/pubhtml for every available `stop_id`
+ * 
+ * @returns {string}
+ */
 async function getBusStopInfo(stop_id) {
+
     const URL = `https://www.stops.lt/vilnius/departures2.php?stopid=${stop_id}`;
 
     const response = await fetch(URL);
